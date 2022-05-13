@@ -1,10 +1,6 @@
 import "./ExpenseDate.scss";
 
-interface Props {
-  date: Date;
-}
-
-export const ExpenseDate = (props: Props) => {
+export const ExpenseDate = (props: { date: Date }) => {
   const month = props.date.toLocaleString("en-US", { month: "long" });
   const day = props.date.toLocaleDateString("en-US", { day: "2-digit" });
   const year = props.date.getFullYear();

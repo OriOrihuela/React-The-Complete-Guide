@@ -1,7 +1,9 @@
-import Expenses from "./components/Expenses/Expenses";
+import { Expenses } from "./components/Expenses/Expenses";
+import { NewExpense } from "./components/NewExpense/NewExpense";
+import { Expense } from "./model/expense";
 
 export const App = () => {
-  const expenses = [
+  const expenses: Expense[] = [
     {
       id: "e1",
       title: "Toilet Paper",
@@ -23,9 +25,12 @@ export const App = () => {
     },
   ];
 
+  const addExpenseHandler = (expense: Expense) =>
+    console.log("expense :>> ", expense);
+
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
