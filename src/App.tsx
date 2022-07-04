@@ -1,9 +1,10 @@
 import { Expenses } from "./components/Expenses/Expenses";
 import { NewExpense } from "./components/NewExpense/NewExpense";
 import { Expense } from "./model/expense";
+import { useState } from "react";
 
 export const App = () => {
-  const expenses: Expense[] = [
+  const [expenses, setExpenses] = useState([
     {
       id: "e1",
       title: "Toilet Paper",
@@ -23,15 +24,15 @@ export const App = () => {
       amount: 450,
       date: new Date(2021, 5, 12),
     },
-  ];
+  ]);
 
   const addExpenseHandler = (expense: Expense) =>
-    console.log("expense :>> ", expense);
+    setExpenses((prevExpenses) => [...prevExpenses, expense]);
 
   return (
-    <div>
+    <>
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
-    </div>
+    </>
   );
 };
